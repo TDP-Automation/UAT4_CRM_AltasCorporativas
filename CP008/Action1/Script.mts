@@ -539,16 +539,16 @@ Sub TipoEnvio()
 		JavaWindow("Ejecutivo de interacción").JavaDialog("Mensajes de validación").JavaButton("Cerrar").Click
 		ExitActionIteration
 	End If   
-	While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").Exist=False
-		wait 1
-	Wend
-	Dim text
-	text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").GetROProperty("text")
-	While text=""
-		wait 1
-		text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").GetROProperty("text")
-		
-	Wend	
+'	While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").Exist=False
+'		wait 1
+'	Wend
+'	Dim text
+'	text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").GetROProperty("text")
+'	While text=""
+'		wait 1
+'		text=JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").GetROProperty("text")
+'		
+'	Wend	
 	
 
 	If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaEdit("Nombre y Dirección de").Exist Then
@@ -556,7 +556,7 @@ Sub TipoEnvio()
 			tiempo = 0
 			Do
 				tiempo=tiempo+1
-					If tiempo>= 220 Then
+					If tiempo>= 620 Then
 							DataTable("s_Resultado", dtLocalSheet) = "Fallido"
 					    	DataTable("s_Detalle", dtLocalSheet) = "El Nombre y Dirección del Acuerdo de Facturación no se habilito"
 							Reporter.ReportEvent micFail, DataTable("s_Resultado", dtLocalSheet) , DataTable("s_Detalle", dtLocalSheet)
@@ -616,20 +616,20 @@ Sub TipoEnvio()
 '			wait 2		
 '		End If
 		
-		wait 1
+		wait 5
 		JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaRadioButton("Nuevo").Set
-		wait 2	
+		wait 5	
 		JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaList("Mostrar:").Select "Acciones de orden activas "
-		wait 2
+		wait 5
 		JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución_2").JavaButton("Siguiente >_2").Click	
-		wait 1 
+		wait 5 
 		
 
 			tiempo = 0
 			Do
 				tiempo = tiempo + 1
 	
-				If tiempo>=180 Then
+				If tiempo>=680 Then
 					DataTable("s_Resultado", dtLocalSheet) = "Fallido"
 					DataTable("s_Detalle", dtLocalSheet) = "No cargo la pantalla Neogicar Pago"
 					Reporter.ReportEvent micFail, DataTable("s_Resultado", dtLocalSheet) , DataTable("s_Detalle", dtLocalSheet)

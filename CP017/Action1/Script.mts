@@ -737,7 +737,7 @@ Sub TipoEnvio()
 		tiempo=0
 		Do
 		tiempo=tiempo+1
-			If tiempo>=130 Then
+			If tiempo>=630 Then
 				DataTable("s_Resultado", dtLocalSheet) = "Fallido"
 				DataTable("s_Detalle", dtLocalSheet) = "No se habilito el 'Nombre y Dirección de Facturación'"
 				Reporter.ReportEvent micFail, DataTable("s_Resultado", dtLocalSheet), DataTable("s_Detalle", dtLocalSheet)
@@ -788,21 +788,22 @@ Sub TipoEnvio()
 		End If
 		
 		If JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").Exist(1) Then
-			wait 3
+			wait 5
 			JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Lookup-Validated").WaitProperty "enabled", True, 8000
+			wait 5
 			JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaRadioButton("Nuevo").Set @@ hightlight id_;_16599652_;_script infofile_;_ZIP::ssf8.xml_;_
-			wait 2
+			wait 5
 			JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaList("Mostrar:").Select  "Acciones de orden activas "
 
-			wait 2
+			wait 5
 			JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Negociar Distribución").JavaButton("Siguiente >").Click
-			wait 2
+			wait 5
 		End If
 
 			tiempo = 0
 			Do
 			tiempo = tiempo + 1
-				If tiempo>=120 Then
+				If tiempo>=620 Then
 					DataTable("s_Resultado", dtLocalSheet) = "Fallido"
 					DataTable("s_Detalle", dtLocalSheet) = "No cargo la pantalla 'Negociar Pago'"
 					Reporter.ReportEvent micFail, DataTable("s_Resultado", dtLocalSheet),DataTable("s_Detalle", dtLocalSheet)
